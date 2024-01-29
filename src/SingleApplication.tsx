@@ -1,9 +1,15 @@
 import React from "react";
 import styles from "./SingleApplication.module.css";
+import dayjs from "dayjs";
 
 const SingleApplication = ({ application }) => {
+  const formattedDate = (date) => {
+    const result = dayjs(date);
+    return result.format("MM-DD-YYYY");
+  };
+
   return (
-    <div className={styles.SingleApplication}>
+    <div key={application.guid} className={styles.SingleApplication}>
       <div className={styles.cell}>
         <sub>Company</sub>
         {application.company}
@@ -14,19 +20,19 @@ const SingleApplication = ({ application }) => {
       </div>
       <div className={styles.cell}>
         <sub>Email</sub>
-        {application.email}
+        <span className={styles.email}>{application.email}</span>
       </div>
       <div className={styles.cell}>
-        <sub>Loan Amount</sub>
-        {application.loan_amount}
+        <sub>Loan Amount</sub>£
+        {new Intl.NumberFormat().format(application.loan_amount)}
       </div>
       <div className={styles.cell}>
         <sub>Application Date</sub>
-        {application.date_created}
+        {formattedDate(application.date_created)}
       </div>
       <div className={styles.cell}>
         <sub>Expiry date</sub>
-        {application.expiry_date}
+        {formattedDate(application.expiry_date)}
       </div>
     </div>
   );

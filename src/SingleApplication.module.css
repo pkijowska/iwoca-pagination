@@ -9,10 +9,18 @@
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 768px) {
+  .SingleApplication {
+    grid-template-columns: 1fr;
+    margin: 10px;
+  }
+}
+
 .cell {
   text-align: left;
   border-right: 1px solid #eee;
   padding: 0 15px;
+  font-weight: bold;
 }
 
 .cell sub {
@@ -20,4 +28,8 @@
   font-size: 0.8rem;
   color: #999;
   margin-bottom: 5px;
+}
+
+.email {
+  color: var(--color-denim-35);
 }
